@@ -1,0 +1,23 @@
+#定义服务应用名称
+spring:
+  application:
+    name: exam
+  profiles:
+    active: dev #指定配置文件
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  swagger:
+    enabled: true #是否开启swagger
+
+#mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+#日志配置
+logging:
+  config: classpath:logback-spring.xml
+
+#不用jwt验证的url
+filter: /v2/api-docs, /definitions/**, /configuration/ui, /swagger-resources/**, /configuration/security, /swagger-ui.html, /webjars/**,/swagger-resources/configuration/ui,/swagger-ui.html,/doc.html

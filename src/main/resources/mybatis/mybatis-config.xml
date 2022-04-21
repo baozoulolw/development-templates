@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="callSettersOnNulls" value="true"/>
+        <!-- 标准输出，输出到控制台 -->
+
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- 配合logback输出到文件 -->
+        <!--
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="logPrefix" value="dao."/>
+        -->
+    </settings>
+    <typeAliases>
+        <typeAlias type="org.apache.ibatis.type.ClobTypeHandler"
+                   alias="clobTypeHandle"/>
+    </typeAliases>
+    <typeHandlers>
+        <typeHandler javaType="java.lang.String" jdbcType="CLOB"
+                     handler="clobTypeHandle"/>
+    </typeHandlers>
+    <mappers>
+        <mapper resource="mybatis/coreMapper.xml"/>
+    </mappers>
+</configuration>

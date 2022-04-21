@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+    <!--定义日志文件的存储地址,使用相对路径-->
+    <property name="LOG_HOME" value="./logs"/>
+
+    <!-- Console 输出设置 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+    <!--所有的日志文件-->
+    <appender name="all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_HOME}/all/%d{yyyy-MM-dd,aux}/all-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>100</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--debug级别-->
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_HOME}/debug/%d{yyyy-MM-dd,aux}/debug-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>100</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!--info级别-->
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM-dd,aux}/info-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>100</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!--warn级别-->
+    <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_HOME}/warn/%d{yyyy-MM-dd,aux}/warn-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>100</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!--error级别-->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${LOG_HOME}/error/%d{yyyy-MM-dd,aux}/error-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <!--日志文件保留天数 -->
+            <MaxHistory>100</MaxHistory>
+            <!--日志文件最大的大小 -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss}] [%thread] %c  %logger{36} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="async" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="error"/>
+    </appender>
+
+    <logger name="com.ibatis" level="info" />
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="info" />
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="info" />
+    <logger name="org.mybatis.generator" level="info" />
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="info" />
+    <logger name="java.sql.Connection" level="info" />
+    <logger name="java.sql.Statement" level="info" />
+    <logger name="java.sql.PreparedStatement" level="info" />
+    <logger name="java.sql.ResultSet" level="info" />
+
+    <logger name="com.c3.radoo.odc.data" level="info"/>
+    <logger name="org.springframework.boot" level="info"/>
+    <logger name="freemarker" level="warn"/>
+
+    <!-- 启用以下配置会将sql输入到日志文件中，但是debug日志太多了，不推荐 -->
+    <!--
+    <logger name="dao" level="debug" additivity="false">
+        <appender-ref ref="all" />
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="all"/>
+        <appender-ref ref="debug"/>
+        <appender-ref ref="warn"/>
+        <appender-ref ref="error"/>
+    </root>
+    -->
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="all"/>
+        <appender-ref ref="debug"/>
+        <appender-ref ref="warn"/>
+        <appender-ref ref="error"/>
+    </root>
+</configuration>
