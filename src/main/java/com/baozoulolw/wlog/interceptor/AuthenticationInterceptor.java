@@ -78,6 +78,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         } catch (Exception e) {
             throw new Exception("token无效");
         }
+        redisUtil.expire(key, RedisPreEnum.JWT_TOKEN_PRE.getExpired());
         return true;
     }
 
